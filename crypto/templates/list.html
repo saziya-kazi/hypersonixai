@@ -1,0 +1,44 @@
+ {% extends 'index.html' %}
+
+
+{% block content %}
+    <H4>All Actively Monitored Currencies Details</H4>
+    <table class="table" width="100%" id="listtable">
+        <thead>
+        <td> Rank </td>
+        <td> Name </td>
+         <td> Symbol </td>
+        <td> Price </td>
+        <td> Volume 24H </td>
+
+        </thead>
+        <tbody>
+        {% for each in data %}
+        <tr>
+
+            <td>{{each.rank }}</td>
+            <td>{{each.name }}</td>
+             <td>{{each.symbol }}</td>
+            <td>{{each.price }}</td>
+            <td>{{each.volume }}</td>
+        </tr>
+         {% endfor %}
+        </tbody>
+
+    </table>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+
+<script>
+
+console.log("document");
+$(document).ready( function () {
+   $('#listtable').DataTable({
+    "pagingType": "simple_numbers" // "simple" option for 'Previous' and 'Next' buttons only
+  });
+$('.dataTables_length').addClass('bs-select');
+} );
+
+
+</script>
+ {% endblock content %}
